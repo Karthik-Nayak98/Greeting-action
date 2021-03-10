@@ -11,5 +11,5 @@ jobs:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         issue-message: 'Hello @${{github.actor}}, Thank you opening an issue. '
         pr-message: '
-          #:partying_face: Congratulations :tada:
+          # :partying_face: Congratulations :tada:
             :pray: Thank you @${{github.actor}} for taking our your time and contributing to our project. Our team will now review this and if everything looks fine it will be merged.'
