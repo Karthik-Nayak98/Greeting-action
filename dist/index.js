@@ -41,7 +41,7 @@ const run = async () => {
        });
 
        // Adding a default label to the issue.
-       github.issues.addLabels({
+       octokit.issues.addLabels({
          issue_number: context.issue.number,
          owner: context.repo.owner,
          repo: context.repo.repo,
