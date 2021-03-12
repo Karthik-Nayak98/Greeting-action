@@ -9,8 +9,11 @@ const core = __nccwpck_require__(964);
 const github = __nccwpck_require__(33);
 
 const github_token = core.getInput('GITHUB_TOKEN', { required: true });
-const issue_msg = core.getInput('issue_message',{required:false});
+const issue_msg = core.getInput('issue_message', { required: false });
 const pr_msg = core.getInput('PR_message',{required:false});
+
+console.log(issue_msg);
+console.log(pr_msg);
 
 const context = github.context;
 
