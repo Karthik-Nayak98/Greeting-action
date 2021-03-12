@@ -8,18 +8,15 @@ const pr_msg = core.getInput('PR_message',{required:true});
 const context = github.context;
 
 async function run(){
-    issue_msg = core.getInput(issue_message);
-    pr_msg = core.getInput(PR_message);
-
     const event = github.context.eventName;
     var message;
 
     const octokit = github.getOctokit(github_token);
 
     // Checking for the type of event.
-    if(event === pull_request){
+    if(event === 'pull_request'){
         message = pr_msg;
-    }else if(event === issue){
+    }else if(event === 'issue'){
         message = issue_msg;
     }
 
