@@ -11,20 +11,25 @@ const github = __nccwpck_require__(33);
 async function run(){
      try {
        const github_token = core.getInput('GITHUB_TOKEN');
-       const issue_msg = core.getInput('issue_message');
-       const pr_msg = core.getInput('PR_message');
+       const issue_message = core.getInput('issue_message');
+       const PR_message = core.getInput('PR_message');
        const context = github.context;
 
        const event = github.context.eventName;
-       var message;
+       let message;
 
-       const octokit = github.getOctokit(github_token);
+       const octokit = new github.getOctokit(github_token);
+
+        if (!issue_msg || !pr_msg) {
+            core.setFailed('"message" input not found.');
+            return;
+        }
 
        // Checking for the type of event.
        if (event === 'pull_request') {
-         message = pr_msg;
+         message = PR_message;
        } else if (event === 'issues') {
-         message = issue_msg;
+         message = issue_message;
        }
 
        //Creating a comment for PR or issue
@@ -49,6 +54,7 @@ async function run(){
 }
 
 run();
+
 
 /***/ }),
 
