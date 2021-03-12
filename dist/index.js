@@ -15,6 +15,8 @@ const pr_msg = core.getInput('PR_message',{required:false});
 console.log(issue_msg);
 console.log(pr_msg);
 
+core.debug(issue_msg);
+
 const context = github.context;
 
 async function run(){
