@@ -8,11 +8,11 @@ inputs:
 
   issue_message:
     description: 'Put your customized issue message'
-    required: true
+    required: false
 
   PR_message:
     description: 'Put your customized PR message'
-    required: true
+    required: false
 
 runs:
   using: 'node12'
