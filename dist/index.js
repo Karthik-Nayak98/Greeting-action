@@ -1,4 +1,4 @@
-module.exports =
+require('./sourcemap-register.js');module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -8,7 +8,7 @@ module.exports =
 const core = __nccwpck_require__(964);
 const github = __nccwpck_require__(33);
 
-async function run(){
+const run = async () => {
      try {
        const github_token = core.getInput('GITHUB_TOKEN');
        const issue_message = core.getInput('issue_message');
@@ -20,8 +20,8 @@ async function run(){
 
        const octokit = new github.getOctokit(github_token);
 
-        if (!issue_msg || !pr_msg) {
-            core.setFailed('"message" input not found.');
+       if (!issue_message || !PR_message) {
+            core.warning('"message" input not found.');
             return;
         }
 
@@ -6037,3 +6037,4 @@ module.exports = require("zlib");;
 /******/ 	return __nccwpck_require__(601);
 /******/ })()
 ;
+//# sourceMappingURL=index.js.map

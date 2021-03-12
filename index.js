@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-async function run(){
+const run = async () => {
      try {
        const github_token = core.getInput('GITHUB_TOKEN');
        const issue_message = core.getInput('issue_message');
@@ -13,8 +13,8 @@ async function run(){
 
        const octokit = new github.getOctokit(github_token);
 
-        if (!issue_msg || !pr_msg) {
-            core.setFailed('"message" input not found.');
+       if (!issue_message || !PR_message) {
+            core.warning('"message" input not found.');
             return;
         }
 
