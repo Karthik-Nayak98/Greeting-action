@@ -38,8 +38,7 @@ const run = async () => {
          issue_number: context.issue.number,
          owner: context.repo.owner,
          repo: context.repo.repo,
-         labels: ['Proposed'],
-         color: ['gray'],
+         labels: "proposed"
        });
      } catch (error) {
        core.setFailed(error.message);
