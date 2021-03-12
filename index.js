@@ -21,8 +21,25 @@ const run = async () => {
        // Checking for the type of event.
        if (event === 'pull_request') {
          message = PR_message;
+
+          // octokit.issues.createLabel({
+          //   owner: context.repo.owner,
+          //   repo: context.repo.repo,
+          //   name: 'proposal',
+          //   description: 'New changes or updates proposed',
+          //   color: 'BFD4F2', // this is a green color
+          // });
+
        } else if (event === 'issues') {
          message = issue_message;
+         const client = new github.GitHub(github_token);
+
+          client.issues.addLabels({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            labels: 'proposal',
+          });
        }
 
        //Creating a comment for PR or issue
@@ -34,12 +51,14 @@ const run = async () => {
        });
 
        // Adding a default label to the issue.
-       octokit.issues.addLabels({
-         issue_number: context.issue.number,
-         owner: context.repo.owner,
-         repo: context.repo.repo,
-         labels: "proposed"
-       });
+
+
+      //  octokit.issues.addLabels({
+      //    issue_number: context.issue.number,
+      //    owner: context.repo.owner,
+      //    repo: context.repo.repo,
+      //    labels: proposed
+      //  });
      } catch (error) {
        core.setFailed(error.message);
      }
