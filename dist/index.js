@@ -23,10 +23,18 @@ async function run(){
 
         // Checking for the type of event.
         if (event === 'pull_request') {
-            message = "# :partying_face: Congratulations :tada:\
-            :pray: Thank you @${{github.actor}} for taking our your time and contributing to our project. Our team will now review this and if everything looks fine it will be merged";
-        } else if (event === 'issue') {
-            message = "Hello @${{github.actor}}, Thank you opening an issue.";
+            if(!pr_msg){
+                message =
+                '# :partying_face: Congratulations :tada:\
+                :pray: Thank you @${{github.actor}} for taking our your time and contributing to our project. Our team will now review this and if everything looks fine it will be merged';
+            }else
+                message = pr_msg;
+
+        } else if (event === 'issues') {
+            if(!issue_msg){
+                message = "Hello @${{github.actor}}, Thank you opening an issue.";
+            }else
+                message = issue_msg;
         }
 
         //Creating a comment for PR or issue
