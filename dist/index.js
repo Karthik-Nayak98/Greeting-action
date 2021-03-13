@@ -33,10 +33,10 @@ const run = async () => {
        } else if (event === 'issues') {
          message = issue_message;
 
-         let labels = {name: 'proposal',
+         let labels =  {name: 'proposal',
                       description: 'New changes or updates proposed',
                       color: 'BFD4F2', // this is a green color
-                 }
+                    }
 
         //  label.push(octokit.issues.createLabel({
         //    name: 'proposal',
@@ -48,7 +48,7 @@ const run = async () => {
            issue_number: context.issue.number,
            owner: context.repo.owner,
            repo: context.repo.repo,
-           labels: labels,
+           labels: "name: 'proposal', description: 'New changes or updates proposed',color: 'BFD4F2'"
          });
        }
 
