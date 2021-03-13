@@ -25,6 +25,15 @@ const run = async () => {
             return;
         }
 
+        // Creating a new label called proposal
+        octokit.issues.createLabel({
+          owner: context.repo.owner,
+          repo: context.repo.repo,
+          name: 'proposal',
+          description: 'New changes or updates proposed',
+          color: 'BFD4F2', // this is a green color
+        });
+
        // Checking for the type of event.
        if (event === 'pull_request') {
          message = PR_message;
@@ -33,19 +42,11 @@ const run = async () => {
        } else if (event === 'issues') {
          message = issue_message;
 
-
-
-        const label = octokit.issues.createLabel({
-           name: 'proposal',
-           description: 'New changes or updates proposed',
-           color: 'BFD4F2', // this is a green color
-         });
-
          octokit.issues.addLabels({
            issue_number: context.issue.number,
            owner: context.repo.owner,
            repo: context.repo.repo,
-           labels: label,
+           labels: 'proposal',
          });
        }
 
