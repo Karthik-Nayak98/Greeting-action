@@ -34,12 +34,13 @@ const run = async () => {
 
        } else if (event === 'issues') {
          message = issue_message;
+         const labels = ['proposal'];
 
          octokit.issues.addLabels({
            issue_number: context.issue.number,
            owner: context.repo.owner,
            repo: context.repo.repo,
-           labels: 'proposal',
+           labels: labels,
          });
        }
 
