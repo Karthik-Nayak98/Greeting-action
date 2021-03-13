@@ -28,8 +28,6 @@ const run = async () => {
 
          let label = []
          label.push(octokit.issues.createLabel({
-           owner: context.repo.owner,
-           repo: context.repo.repo,
            name: 'proposal',
            description: 'New changes or updates proposed',
            color: 'BFD4F2', // this is a green color
