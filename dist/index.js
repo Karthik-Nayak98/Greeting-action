@@ -33,20 +33,15 @@ const run = async () => {
        } else if (event === 'issues') {
          message = issue_message;
 
-        //  const label = octokit.issues.createLabel({
-        //    owner: context.repo.owner,
-        //    repo: context.repo.repo,
-        //    name: 'proposal',
-        //    description: 'New changes or updates proposed',
-        //    color: 'BFD4F2', // this is a green color
-        //  });
-
-         octokit.issues.addLabels({
-           issue_number: context.issue.number,
+         const label = octokit.issues.createLabel({
            owner: context.repo.owner,
            repo: context.repo.repo,
-           labels: 'proposal',
+           name: 'proposal',
+           description: 'New changes or updates proposed',
+           color: 'BFD4F2', // this is a green color
          });
+
+         octokit.issues.addLabels(label);
        }
 
        //Creating a comment for PR or issue
