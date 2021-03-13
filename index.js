@@ -26,22 +26,23 @@ const run = async () => {
        } else if (event === 'issues') {
          message = issue_message;
 
-         let labels =  {name: 'proposal',
-                      description: 'New changes or updates proposed',
-                      color: 'BFD4F2', // this is a green color
-                    }
 
-        //  label.push(octokit.issues.createLabel({
-        //    name: 'proposal',
-        //    description: 'New changes or updates proposed',
-        //    color: 'BFD4F2', // this is a green color
-        //  }));
 
+        const label = octokit.issues.createLabel({
+           name: 'proposal',
+           description: 'New changes or updates proposed',
+           color: 'BFD4F2', // this is a green color
+         });
+
+         core.debug(label);
+
+        const labels = []
+        labels.push(label)
          octokit.issues.addLabels({
            issue_number: context.issue.number,
            owner: context.repo.owner,
            repo: context.repo.repo,
-           labels: [labels],
+           labels: labels,
          });
        }
 
