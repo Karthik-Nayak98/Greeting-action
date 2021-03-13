@@ -33,14 +33,14 @@ const run = async () => {
        } else if (event === 'issues') {
          message = issue_message;
 
-         const label = ['proposal']
-        //  const label = octokit.issues.createLabel({
-        //    owner: context.repo.owner,
-        //    repo: context.repo.repo,
-        //    name: 'proposal',
-        //    description: 'New changes or updates proposed',
-        //    color: 'BFD4F2', // this is a green color
-        //  });
+         let label = []
+         label.push(octokit.issues.createLabel({
+           owner: context.repo.owner,
+           repo: context.repo.repo,
+           name: 'proposal',
+           description: 'New changes or updates proposed',
+           color: 'BFD4F2', // this is a green color
+         }));
 
          octokit.issues.addLabels({
            issue_number: context.issue.number,
