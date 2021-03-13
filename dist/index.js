@@ -33,10 +33,10 @@ const run = async () => {
        } else if (event === 'issues') {
          message = issue_message;
 
-         let label = [{name: 'proposal',
+         let label = {name: 'proposal',
                       description: 'New changes or updates proposed',
                       color: 'BFD4F2', // this is a green color
-                     }]
+                 }
 
         //  label.push(octokit.issues.createLabel({
         //    name: 'proposal',
