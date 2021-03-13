@@ -41,7 +41,7 @@ const run = async () => {
 
        } else if (event === 'issues') {
          message = issue_message;
-         const labels = ['proposal'];
+         const labels = ['proposal', "GSSoc'21"];
 
          octokit.issues.addLabels({
            issue_number: context.issue.number,
