@@ -30,12 +30,12 @@ const run = async () => {
        // Checking for the type of event.
        if (event === 'pull_request') {
          message = PR_message;
-
-
        } else if (event === 'issues') {
          message = issue_message;
-         const labels = ['proposal', "GSSoc'21"];
 
+         const labels = ["proposal", "GSSoc'21"];
+
+         // Adding the labels present in the array.
          octokit.issues.addLabels({
            issue_number: context.issue.number,
            owner: context.repo.owner,
@@ -52,15 +52,6 @@ const run = async () => {
          body: message,
        });
 
-       // Adding a default label to the issue.
-
-
-      //  octokit.issues.addLabels({
-      //    issue_number: context.issue.number,
-      //    owner: context.repo.owner,
-      //    repo: context.repo.repo,
-      //    labels: proposed
-      //  });
      } catch (error) {
        core.setFailed(error.message);
      }
