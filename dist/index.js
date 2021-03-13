@@ -41,15 +41,11 @@ const run = async () => {
            color: 'BFD4F2', // this is a green color
          });
 
-         core.debug(label);
-
-        const labels = []
-        labels.push(label)
          octokit.issues.addLabels({
            issue_number: context.issue.number,
            owner: context.repo.owner,
            repo: context.repo.repo,
-           labels: labels,
+           labels: label,
          });
        }
 
